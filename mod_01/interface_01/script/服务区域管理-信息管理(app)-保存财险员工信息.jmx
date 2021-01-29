@@ -1,0 +1,1742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="互动专员-保存财险员工信息-saveCxAgentDetail" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="变量" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="apikey" elementType="Argument">
+              <stringProp name="Argument.name">apikey</stringProp>
+              <stringProp name="Argument.value">14064a6ec684456cb7327ab2206c57d3</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="Source" elementType="Argument">
+              <stringProp name="Argument.name">Source</stringProp>
+              <stringProp name="Argument.value">WX</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="url" elementType="Argument">
+              <stringProp name="Argument.name">url</stringProp>
+              <stringProp name="Argument.value">/isssuat/sssapi</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="agent_code" elementType="Argument">
+              <stringProp name="Argument.name">agent_code</stringProp>
+              <stringProp name="Argument.value">3145015787</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="互动专员-信息头" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json;charset=UTF-8</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">apikey</stringProp>
+              <stringProp name="Header.value">${apikey}</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Source</stringProp>
+              <stringProp name="Header.value">${Source}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC -广西机构数据库145" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">select 1</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">HDJDBC</stringProp>
+          <stringProp name="dbUrl">jdbc:mysql://10.135.102.176:3306/145?useSSL=false&amp;&amp;characterEncoding=utf8</stringProp>
+          <stringProp name="driver">com.mysql.jdbc.Driver</stringProp>
+          <stringProp name="initQuery"></stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">Picc,life#234</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">picclife</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="正常场景" enabled="true"/>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="保存财险员工信息（全参调用）" enabled="true"/>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="保存财险员工信息-saveCxAgentDetail（全参调用）" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+	&quot;agentCode&quot;: &quot;${agentCode}&quot;,&#xd;
+	&quot;cxAgentBirthday&quot;: &quot;${cxAgentBirthday}&quot;,&#xd;
+	&quot;cxAgentCode&quot;: &quot;${cxAgentCode}&quot;,&#xd;
+	&quot;cxAgentDuty&quot;: &quot;${cxAgentDuty}&quot;,&#xd;
+	&quot;cxAgentGender&quot;: &quot;${cxAgentGender}&quot;,&#xd;
+	&quot;cxAgentHobby&quot;: &quot;${cxAgentHobby}&quot;,&#xd;
+	&quot;cxAgentName&quot;: &quot;${cxAgentName}&quot;,&#xd;
+	&quot;cxAgentPhone&quot;: &quot;${cxAgentPhone}&quot;,&#xd;
+	&quot;cxBranchId&quot;: &quot;${cxBranchId}&quot;,&#xd;
+	&quot;cxBranchName&quot;: &quot;${cxBranchName}&quot;,&#xd;
+	&quot;isBindMyselfCode&quot;: &quot;${isBindMyselfCode}&quot;,&#xd;
+	&quot;isBindSxAgcode&quot;: &quot;${isBindSxAgcode}&quot;,&#xd;
+	&quot;isSaleQualifications&quot;: &quot;${isSaleQualifications}&quot;,&#xd;
+	&quot;organId&quot;: &quot;1450304&quot;,&#xd;
+	&quot;otherMsg&quot;: &quot;${otherMsg}&quot;,&#xd;
+	&quot;remark&quot;: &quot;${remark}&quot;,&#xd;
+	&quot;transExeDate&quot;: &quot;2019-12-17&quot;, &#xd;
+	&quot;transExeTime&quot;: &quot;10:08:47&quot;,&#xd;
+	&quot;transRefGUID&quot;: &quot;x3nMIVoz&quot;,&#xd;
+	&quot;uid&quot;: &quot;后台生成&quot;&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">xszcuat.picclife.cn</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+              <stringProp name="HTTPSampler.path">${url}/interactioncommissionapi/serviceAreaManagement/saveCxAgentDetail</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="准备请求参数" enabled="true">
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="script">String agentCode = &quot;3145015787&quot;;
+String cxAgentBirthday = &quot;2021-01-21&quot;;
+String cxAgentCode = &quot;3145015787&quot;;
+String cxAgentDuty = &quot;自动化测试&quot;;
+String cxAgentGender = &quot;0&quot;;
+String cxAgentHobby = &quot;打球&quot;;
+String cxAgentName = &quot;张三&quot;;
+String cxAgentPhone = &quot;13812341234&quot;;
+String cxBranchId = &quot;3145015787&quot;;
+String cxBranchName = &quot;张三机构&quot;;
+String isBindMyselfCode = &quot;1&quot;;
+String isBindSxAgcode = &quot;1&quot;;
+String isSaleQualifications = &quot;1&quot;;
+String otherMsg = &quot;其他信息&quot;;
+String remark = &quot;备注&quot;;
+
+vars.put(&quot;agentCode&quot;,agentCode);
+vars.put(&quot;cxAgentBirthday&quot;,cxAgentBirthday);
+vars.put(&quot;cxAgentCode&quot;,cxAgentCode);
+vars.put(&quot;cxAgentDuty&quot;,cxAgentDuty);
+vars.put(&quot;cxAgentGender&quot;,cxAgentGender);
+vars.put(&quot;cxAgentHobby&quot;,cxAgentHobby);
+vars.put(&quot;cxAgentName&quot;,cxAgentName);
+vars.put(&quot;cxAgentPhone&quot;,cxAgentPhone);
+vars.put(&quot;cxBranchId&quot;,cxBranchId);
+vars.put(&quot;cxBranchName&quot;,cxBranchName);
+vars.put(&quot;isBindMyselfCode&quot;,isBindMyselfCode);
+vars.put(&quot;isBindSxAgcode&quot;,isBindSxAgcode);
+vars.put(&quot;isSaleQualifications&quot;,isSaleQualifications);
+vars.put(&quot;otherMsg&quot;,otherMsg);
+vars.put(&quot;remark&quot;,remark);</stringProp>
+              </BeanShellPreProcessor>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="断言返回200" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultCode为1" enabled="true">
+                <stringProp name="JSON_PATH">$.transResult.resultCode</stringProp>
+                <stringProp name="EXPECTED_VALUE">1</stringProp>
+                <boolProp name="JSONVALIDATION">true</boolProp>
+                <boolProp name="EXPECT_NULL">false</boolProp>
+                <boolProp name="INVERT">false</boolProp>
+                <boolProp name="ISREGEX">true</boolProp>
+              </JSONPathAssertion>
+              <hashTree/>
+            </hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="查询数据库财险员工信息数据" enabled="true">
+              <stringProp name="dataSource">HDJDBC</stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="query">select agent_code,cx_agent_code,cx_agent_birthday,cx_agent_duty,cx_agent_gender,cx_agent_hobby,cx_agent_name,cx_agent_phone,cx_branch_id,cx_branch_name,is_bind_sx_agcode,is_bind_myself_code,is_sale_qualifications,remark,other_msg  from  interactioncommission_property_insurance_staff CX   where agent_code=${agent_code};</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="variableNames"></stringProp>
+              <stringProp name="resultVariable">sqlResults</stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+            </JDBCSampler>
+            <hashTree/>
+            <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="获取数据库数据" enabled="true">
+              <stringProp name="BeanShellSampler.query">	Object result = vars.getObject(&quot;sqlResults&quot;);  
+	log.info(&quot;财险员工信息表的查询结果：&quot;+result);
+
+	
+	
+	String agent_code = result.get(0).get(&quot;agent_code&quot;).toString();
+	String cx_agent_code = result.get(0).get(&quot;cx_agent_code&quot;).toString();
+	String cx_agent_birthday = result.get(0).get(&quot;cx_agent_birthday&quot;).toString();
+	String cx_agent_duty = result.get(0).get(&quot;cx_agent_duty&quot;).toString();
+	String cx_agent_gender = result.get(0).get(&quot;cx_agent_gender&quot;).toString();
+	String cx_agent_hobby = result.get(0).get(&quot;cx_agent_hobby&quot;).toString();
+	String cx_agent_name = result.get(0).get(&quot;cx_agent_name&quot;).toString();
+	String cx_agent_phone = result.get(0).get(&quot;cx_agent_phone&quot;).toString();
+	String cx_branch_id = result.get(0).get(&quot;cx_branch_id&quot;).toString();
+	String cx_branch_name = result.get(0).get(&quot;cx_branch_name&quot;).toString();
+	String is_bind_sx_agcode = result.get(0).get(&quot;is_bind_sx_agcode&quot;).toString();
+	String is_bind_myself_code = result.get(0).get(&quot;is_bind_myself_code&quot;).toString();
+	String is_sale_qualifications = result.get(0).get(&quot;is_sale_qualifications&quot;).toString();
+	String remark = result.get(0).get(&quot;remark&quot;).toString();
+	String other_msg = result.get(0).get(&quot;other_msg&quot;).toString();
+	
+	
+	
+	log.info(&quot;agent_code的结果：&quot;+agent_code);
+	log.info(&quot;cx_agent_code的结果：&quot;+cx_agent_code);
+	log.info(&quot;cx_agent_birthday的结果：&quot;+cx_agent_birthday);
+
+	vars.put(&quot;agent_code&quot;,agent_code);
+	vars.put(&quot;cx_agent_code&quot;,cx_agent_code);
+	vars.put(&quot;cx_agent_birthday&quot;,cx_agent_birthday);
+	vars.put(&quot;cx_agent_duty&quot;,cx_agent_duty);
+	vars.put(&quot;cx_agent_gender&quot;,cx_agent_gender);
+	vars.put(&quot;cx_agent_hobby&quot;,cx_agent_hobby);
+	vars.put(&quot;cx_agent_name&quot;,cx_agent_name);
+	vars.put(&quot;cx_agent_phone&quot;,cx_agent_phone);
+	vars.put(&quot;cx_branch_id&quot;,cx_branch_id);
+	vars.put(&quot;cx_branch_name&quot;,cx_branch_name);
+	vars.put(&quot;is_bind_sx_agcode&quot;,is_bind_sx_agcode);
+	vars.put(&quot;is_bind_myself_code&quot;,is_bind_myself_code);
+	vars.put(&quot;is_sale_qualifications&quot;,is_sale_qualifications);
+	vars.put(&quot;remark&quot;,remark);
+	vars.put(&quot;other_msg&quot;,other_msg);
+	
+	
+</stringProp>
+              <stringProp name="BeanShellSampler.filename"></stringProp>
+              <stringProp name="BeanShellSampler.parameters"></stringProp>
+              <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+            </BeanShellSampler>
+            <hashTree>
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="数据库校验" enabled="true">
+                <stringProp name="BeanShellAssertion.query">String agentCode = vars.get(&quot;agentCode&quot;);
+String cxAgentBirthday = vars.get(&quot;cxAgentBirthday&quot;);
+String cxAgentCode = vars.get(&quot;cxAgentCode&quot;);
+String cxAgentDuty = vars.get(&quot;cxAgentDuty&quot;);
+String cxAgentGender = vars.get(&quot;cxAgentGender&quot;);
+String cxAgentHobby = vars.get(&quot;cxAgentHobby&quot;);
+String cxAgentName = vars.get(&quot;cxAgentName&quot;);
+String cxAgentPhone = vars.get(&quot;cxAgentPhone&quot;);
+String cxBranchId = vars.get(&quot;cxBranchId&quot;);
+String cxBranchName = vars.get(&quot;cxBranchName&quot;);
+String isBindMyselfCode = vars.get(&quot;isBindMyselfCode&quot;);
+String isBindSxAgcode = vars.get(&quot;isBindSxAgcode&quot;);
+String isSaleQualifications = vars.get(&quot;isSaleQualifications&quot;);
+String otherMsg = vars.get(&quot;otherMsg&quot;);
+String remark = vars.get(&quot;remark&quot;);
+
+String agent_codeDB = vars.get(&quot;agent_code&quot;);
+String cx_agent_codeDB = vars.get(&quot;cx_agent_code&quot;);
+String cx_agent_birthdayDB = vars.get(&quot;cx_agent_birthday&quot;);
+String cx_agent_dutyDB = vars.get(&quot;cx_agent_duty&quot;);
+String cx_agent_genderDB = vars.get(&quot;cx_agent_gender&quot;);
+String cx_agent_hobbyDB = vars.get(&quot;cx_agent_hobby&quot;);
+String cx_agent_nameDB = vars.get(&quot;cx_agent_name&quot;);
+String cx_agent_phoneDB = vars.get(&quot;cx_agent_phone&quot;);
+String cx_branch_idDB = vars.get(&quot;cx_branch_id&quot;);
+String cx_branch_nameDB = vars.get(&quot;cx_branch_name&quot;);
+String is_bind_sx_agcodeDB = vars.get(&quot;is_bind_sx_agcode&quot;);
+String is_bind_myself_codeDB = vars.get(&quot;is_bind_myself_code&quot;);
+String is_sale_qualificationsDB = vars.get(&quot;is_sale_qualifications&quot;);
+String remarkDB = vars.get(&quot;remark&quot;);
+String other_msgDB = vars.get(&quot;other_msg&quot;);
+
+
+
+if(agentCode.equals(agent_codeDB)&amp;&amp;cxAgentBirthday.equals(cx_agent_birthdayDB)&amp;&amp;cxAgentCode.equals(cx_agent_codeDB)&amp;&amp;
+	cxAgentDuty.equals(cx_agent_dutyDB)&amp;&amp;cxAgentGender.equals(cx_agent_genderDB)&amp;&amp;cxAgentHobby.equals(cx_agent_hobbyDB)&amp;&amp;
+	cxAgentName.equals(cx_agent_nameDB)&amp;&amp;cxAgentPhone.equals(cx_agent_phoneDB)&amp;&amp;cxBranchId.equals(cx_branch_idDB)&amp;&amp;
+	cxBranchName.equals(cx_branch_nameDB)&amp;&amp;isBindMyselfCode.equals(is_bind_myself_codeDB)&amp;&amp;isBindSxAgcode.equals(is_bind_sx_agcodeDB)&amp;&amp;
+	isSaleQualifications.equals(is_sale_qualificationsDB)&amp;&amp;remark.equals(remarkDB)&amp;&amp;otherMsg.equals(other_msgDB)
+){
+	Failure = false;
+	FailureMessage = &quot;数据库校验正确&quot;;
+}else{
+	Failure = true;
+	FailureMessage = 
+	&quot;数据库校验正确失败，数据库中的agent_codeDB值是：&quot;+agent_codeDB+&quot;接口返回的值是：&quot;+agentCode+
+	&quot;数据库中的cx_agent_birthdayDB值是：&quot;+cx_agent_birthdayDB+&quot;接口返回的值是：&quot;+cxAgentBirthday+
+	&quot;数据库中的cx_agent_codeDB值是：&quot;+cx_agent_codeDB+&quot;接口返回的值是：&quot;+cxAgentCode+
+	&quot;数据库中的cx_agent_dutyDB值是：&quot;+cx_agent_dutyDB+&quot;接口返回的值是：&quot;+cxAgentDuty+
+	&quot;数据库中的cx_agent_genderDB值是：&quot;+cx_agent_genderDB+&quot;接口返回的值是：&quot;+cxAgentGender+
+	&quot;数据库中的cx_agent_hobbyDB值是：&quot;+cx_agent_hobbyDB+&quot;接口返回的值是：&quot;+cxAgentHobby+
+	&quot;数据库中的cx_agent_nameDB值是：&quot;+cx_agent_nameDB+&quot;接口返回的值是：&quot;+cxAgentName+
+	&quot;数据库中的cx_agent_phoneDB值是：&quot;+cx_agent_phoneDB+&quot;接口返回的值是：&quot;+cxAgentPhone+
+	&quot;数据库中的cx_branch_idDB值是：&quot;+cx_branch_idDB+&quot;接口返回的值是：&quot;+cxBranchId+
+	&quot;数据库中的cx_branch_nameDB值是：&quot;+cx_branch_nameDB+&quot;接口返回的值是：&quot;+cxBranchName+
+	&quot;数据库中的is_bind_myself_codeDB值是：&quot;+is_bind_myself_codeDB+&quot;接口返回的值是：&quot;+isBindMyselfCode+
+	&quot;数据库中的is_bind_sx_agcodeDB值是：&quot;+is_bind_sx_agcodeDB+&quot;接口返回的值是：&quot;+isBindSxAgcode+
+	&quot;数据库中的is_sale_qualificationsDB值是：&quot;+is_sale_qualificationsDB+&quot;接口返回的值是：&quot;+isSaleQualifications+
+	&quot;数据库中的remarkDB值是：&quot;+remarkDB+&quot;接口返回的值是：&quot;+remark+
+	&quot;数据库中的other_msgDB值是：&quot;+other_msgDB+&quot;接口返回的值是：&quot;+otherMsg;
+}</stringProp>
+                <stringProp name="BeanShellAssertion.filename"></stringProp>
+                <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+              </BeanShellAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="保存财险员工信息（不传非必填参数）" enabled="true"/>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="保存财险员工信息-saveCxAgentDetail（不传非必填参数）" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+	&quot;agentCode&quot;: &quot;${agentCode}&quot;,&#xd;
+	&quot;cxAgentBirthday&quot;: &quot;${cxAgentBirthday}&quot;,&#xd;
+	&quot;cxAgentCode&quot;: &quot;${cxAgentCode}&quot;,&#xd;
+	&quot;cxAgentDuty&quot;: &quot;${cxAgentDuty}&quot;,&#xd;
+	&quot;cxAgentGender&quot;: &quot;${cxAgentGender}&quot;,&#xd;
+	&quot;cxAgentHobby&quot;: &quot;${cxAgentHobby}&quot;,&#xd;
+	&quot;cxAgentName&quot;: &quot;${cxAgentName}&quot;,&#xd;
+	&quot;cxAgentPhone&quot;: &quot;${cxAgentPhone}&quot;,&#xd;
+	&quot;cxBranchId&quot;: &quot;${cxBranchId}&quot;,&#xd;
+	&quot;cxBranchName&quot;: &quot;${cxBranchName}&quot;,&#xd;
+	&quot;isBindMyselfCode&quot;: &quot;${isBindMyselfCode}&quot;,&#xd;
+	&quot;isBindSxAgcode&quot;: &quot;${isBindSxAgcode}&quot;,&#xd;
+	&quot;isSaleQualifications&quot;: &quot;${isSaleQualifications}&quot;,&#xd;
+	&quot;organId&quot;: &quot;1450304&quot;,&#xd;
+	&quot;otherMsg&quot;: &quot;${otherMsg}&quot;,&#xd;
+	&quot;remark&quot;: &quot;${remark}&quot;,&#xd;
+	&quot;transExeDate&quot;: &quot;2019-12-17&quot;, &#xd;
+	&quot;transExeTime&quot;: &quot;10:08:47&quot;,&#xd;
+	&quot;transRefGUID&quot;: &quot;x3nMIVoz&quot;,&#xd;
+	&quot;uid&quot;: &quot;&quot;&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">xszcuat.picclife.cn</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+              <stringProp name="HTTPSampler.path">${url}/interactioncommissionapi/serviceAreaManagement/saveCxAgentDetail</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="准备请求参数" enabled="true">
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="script">String agentCode = &quot;3145015787&quot;;
+String cxAgentBirthday = &quot;2021-01-21&quot;;
+String cxAgentCode = &quot;3145015787&quot;;
+String cxAgentDuty = &quot;&quot;;
+String cxAgentGender = &quot;0&quot;;
+String cxAgentHobby = &quot;&quot;;
+String cxAgentName = &quot;张三&quot;;
+String cxAgentPhone = &quot;13812341234&quot;;
+String cxBranchId = &quot;3145015787&quot;;
+String cxBranchName = &quot;张三机构&quot;;
+String isBindMyselfCode = &quot;1&quot;;
+String isBindSxAgcode = &quot;1&quot;;
+String isSaleQualifications = &quot;&quot;;
+String otherMsg = &quot;&quot;;
+String remark = &quot;&quot;;
+
+vars.put(&quot;agentCode&quot;,agentCode);
+vars.put(&quot;cxAgentBirthday&quot;,cxAgentBirthday);
+vars.put(&quot;cxAgentCode&quot;,cxAgentCode);
+vars.put(&quot;cxAgentDuty&quot;,cxAgentDuty);
+vars.put(&quot;cxAgentGender&quot;,cxAgentGender);
+vars.put(&quot;cxAgentHobby&quot;,cxAgentHobby);
+vars.put(&quot;cxAgentName&quot;,cxAgentName);
+vars.put(&quot;cxAgentPhone&quot;,cxAgentPhone);
+vars.put(&quot;cxBranchId&quot;,cxBranchId);
+vars.put(&quot;cxBranchName&quot;,cxBranchName);
+vars.put(&quot;isBindMyselfCode&quot;,isBindMyselfCode);
+vars.put(&quot;isBindSxAgcode&quot;,isBindSxAgcode);
+vars.put(&quot;isSaleQualifications&quot;,isSaleQualifications);
+vars.put(&quot;otherMsg&quot;,otherMsg);
+vars.put(&quot;remark&quot;,remark);</stringProp>
+              </BeanShellPreProcessor>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="断言返回200" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultCode为1" enabled="true">
+                <stringProp name="JSON_PATH">$.transResult.resultCode</stringProp>
+                <stringProp name="EXPECTED_VALUE">1</stringProp>
+                <boolProp name="JSONVALIDATION">true</boolProp>
+                <boolProp name="EXPECT_NULL">false</boolProp>
+                <boolProp name="INVERT">false</boolProp>
+                <boolProp name="ISREGEX">true</boolProp>
+              </JSONPathAssertion>
+              <hashTree/>
+            </hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="查询数据库财险员工信息数据" enabled="true">
+              <stringProp name="dataSource">HDJDBC</stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="query">select agent_code,cx_agent_code,cx_agent_birthday,cx_agent_duty,cx_agent_gender,cx_agent_hobby,cx_agent_name,cx_agent_phone,cx_branch_id,cx_branch_name,is_bind_sx_agcode,is_bind_myself_code,is_sale_qualifications,remark,other_msg  from  interactioncommission_property_insurance_staff CX   where agent_code=${agent_code};</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="variableNames"></stringProp>
+              <stringProp name="resultVariable">sqlResults</stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+            </JDBCSampler>
+            <hashTree/>
+            <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="获取数据库数据" enabled="true">
+              <stringProp name="BeanShellSampler.query">	Object result = vars.getObject(&quot;sqlResults&quot;);  
+	log.info(&quot;财险员工信息表的查询结果：&quot;+result);
+
+	
+	
+	String agent_code = result.get(0).get(&quot;agent_code&quot;).toString();
+	String cx_agent_code = result.get(0).get(&quot;cx_agent_code&quot;).toString();
+	String cx_agent_birthday = result.get(0).get(&quot;cx_agent_birthday&quot;).toString();
+	String cx_agent_duty = result.get(0).get(&quot;cx_agent_duty&quot;).toString();
+	String cx_agent_gender = result.get(0).get(&quot;cx_agent_gender&quot;).toString();
+	String cx_agent_hobby = result.get(0).get(&quot;cx_agent_hobby&quot;).toString();
+	String cx_agent_name = result.get(0).get(&quot;cx_agent_name&quot;).toString();
+	String cx_agent_phone = result.get(0).get(&quot;cx_agent_phone&quot;).toString();
+	String cx_branch_id = result.get(0).get(&quot;cx_branch_id&quot;).toString();
+	String cx_branch_name = result.get(0).get(&quot;cx_branch_name&quot;).toString();
+	String is_bind_sx_agcode = result.get(0).get(&quot;is_bind_sx_agcode&quot;).toString();
+	String is_bind_myself_code = result.get(0).get(&quot;is_bind_myself_code&quot;).toString();
+	String is_sale_qualifications = result.get(0).get(&quot;is_sale_qualifications&quot;).toString();
+	String remark = result.get(0).get(&quot;remark&quot;).toString();
+	String other_msg = result.get(0).get(&quot;other_msg&quot;).toString();
+	
+	
+	
+	log.info(&quot;agent_code的结果：&quot;+agent_code);
+	log.info(&quot;cx_agent_code的结果：&quot;+cx_agent_code);
+	log.info(&quot;cx_agent_birthday的结果：&quot;+cx_agent_birthday);
+
+	vars.put(&quot;agent_code&quot;,agent_code);
+	vars.put(&quot;cx_agent_code&quot;,cx_agent_code);
+	vars.put(&quot;cx_agent_birthday&quot;,cx_agent_birthday);
+	vars.put(&quot;cx_agent_duty&quot;,cx_agent_duty);
+	vars.put(&quot;cx_agent_gender&quot;,cx_agent_gender);
+	vars.put(&quot;cx_agent_hobby&quot;,cx_agent_hobby);
+	vars.put(&quot;cx_agent_name&quot;,cx_agent_name);
+	vars.put(&quot;cx_agent_phone&quot;,cx_agent_phone);
+	vars.put(&quot;cx_branch_id&quot;,cx_branch_id);
+	vars.put(&quot;cx_branch_name&quot;,cx_branch_name);
+	vars.put(&quot;is_bind_sx_agcode&quot;,is_bind_sx_agcode);
+	vars.put(&quot;is_bind_myself_code&quot;,is_bind_myself_code);
+	vars.put(&quot;is_sale_qualifications&quot;,is_sale_qualifications);
+	vars.put(&quot;remark&quot;,remark);
+	vars.put(&quot;other_msg&quot;,other_msg);
+	
+	
+</stringProp>
+              <stringProp name="BeanShellSampler.filename"></stringProp>
+              <stringProp name="BeanShellSampler.parameters"></stringProp>
+              <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+            </BeanShellSampler>
+            <hashTree>
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="数据库校验" enabled="true">
+                <stringProp name="BeanShellAssertion.query">String agentCode = vars.get(&quot;agentCode&quot;);
+String cxAgentBirthday = vars.get(&quot;cxAgentBirthday&quot;);
+String cxAgentCode = vars.get(&quot;cxAgentCode&quot;);
+String cxAgentDuty = vars.get(&quot;cxAgentDuty&quot;);
+String cxAgentGender = vars.get(&quot;cxAgentGender&quot;);
+String cxAgentHobby = vars.get(&quot;cxAgentHobby&quot;);
+String cxAgentName = vars.get(&quot;cxAgentName&quot;);
+String cxAgentPhone = vars.get(&quot;cxAgentPhone&quot;);
+String cxBranchId = vars.get(&quot;cxBranchId&quot;);
+String cxBranchName = vars.get(&quot;cxBranchName&quot;);
+String isBindMyselfCode = vars.get(&quot;isBindMyselfCode&quot;);
+String isBindSxAgcode = vars.get(&quot;isBindSxAgcode&quot;);
+String isSaleQualifications = vars.get(&quot;isSaleQualifications&quot;);
+String otherMsg = vars.get(&quot;otherMsg&quot;);
+String remark = vars.get(&quot;remark&quot;);
+
+String agent_codeDB = vars.get(&quot;agent_code&quot;);
+String cx_agent_codeDB = vars.get(&quot;cx_agent_code&quot;);
+String cx_agent_birthdayDB = vars.get(&quot;cx_agent_birthday&quot;);
+String cx_agent_dutyDB = vars.get(&quot;cx_agent_duty&quot;);
+String cx_agent_genderDB = vars.get(&quot;cx_agent_gender&quot;);
+String cx_agent_hobbyDB = vars.get(&quot;cx_agent_hobby&quot;);
+String cx_agent_nameDB = vars.get(&quot;cx_agent_name&quot;);
+String cx_agent_phoneDB = vars.get(&quot;cx_agent_phone&quot;);
+String cx_branch_idDB = vars.get(&quot;cx_branch_id&quot;);
+String cx_branch_nameDB = vars.get(&quot;cx_branch_name&quot;);
+String is_bind_sx_agcodeDB = vars.get(&quot;is_bind_sx_agcode&quot;);
+String is_bind_myself_codeDB = vars.get(&quot;is_bind_myself_code&quot;);
+String is_sale_qualificationsDB = vars.get(&quot;is_sale_qualifications&quot;);
+String remarkDB = vars.get(&quot;remark&quot;);
+String other_msgDB = vars.get(&quot;other_msg&quot;);
+
+
+
+if(agentCode.equals(agent_codeDB)&amp;&amp;cxAgentBirthday.equals(cx_agent_birthdayDB)&amp;&amp;cxAgentCode.equals(cx_agent_codeDB)&amp;&amp;
+	cxAgentDuty.equals(cx_agent_dutyDB)&amp;&amp;cxAgentGender.equals(cx_agent_genderDB)&amp;&amp;cxAgentHobby.equals(cx_agent_hobbyDB)&amp;&amp;
+	cxAgentName.equals(cx_agent_nameDB)&amp;&amp;cxAgentPhone.equals(cx_agent_phoneDB)&amp;&amp;cxBranchId.equals(cx_branch_idDB)&amp;&amp;
+	cxBranchName.equals(cx_branch_nameDB)&amp;&amp;isBindMyselfCode.equals(is_bind_myself_codeDB)&amp;&amp;isBindSxAgcode.equals(is_bind_sx_agcodeDB)&amp;&amp;
+	isSaleQualifications.equals(is_sale_qualificationsDB)&amp;&amp;remark.equals(remarkDB)&amp;&amp;otherMsg.equals(other_msgDB)
+){
+	Failure = false;
+	FailureMessage = &quot;数据库校验正确&quot;;
+}else{
+	Failure = true;
+	FailureMessage = 
+	&quot;数据库校验正确失败，数据库中的agent_codeDB值是：&quot;+agent_codeDB+&quot;接口返回的值是：&quot;+agentCode+
+	&quot;数据库中的cx_agent_birthdayDB值是：&quot;+cx_agent_birthdayDB+&quot;接口返回的值是：&quot;+cxAgentBirthday+
+	&quot;数据库中的cx_agent_codeDB值是：&quot;+cx_agent_codeDB+&quot;接口返回的值是：&quot;+cxAgentCode+
+	&quot;数据库中的cx_agent_dutyDB值是：&quot;+cx_agent_dutyDB+&quot;接口返回的值是：&quot;+cxAgentDuty+
+	&quot;数据库中的cx_agent_genderDB值是：&quot;+cx_agent_genderDB+&quot;接口返回的值是：&quot;+cxAgentGender+
+	&quot;数据库中的cx_agent_hobbyDB值是：&quot;+cx_agent_hobbyDB+&quot;接口返回的值是：&quot;+cxAgentHobby+
+	&quot;数据库中的cx_agent_nameDB值是：&quot;+cx_agent_nameDB+&quot;接口返回的值是：&quot;+cxAgentName+
+	&quot;数据库中的cx_agent_phoneDB值是：&quot;+cx_agent_phoneDB+&quot;接口返回的值是：&quot;+cxAgentPhone+
+	&quot;数据库中的cx_branch_idDB值是：&quot;+cx_branch_idDB+&quot;接口返回的值是：&quot;+cxBranchId+
+	&quot;数据库中的cx_branch_nameDB值是：&quot;+cx_branch_nameDB+&quot;接口返回的值是：&quot;+cxBranchName+
+	&quot;数据库中的is_bind_myself_codeDB值是：&quot;+is_bind_myself_codeDB+&quot;接口返回的值是：&quot;+isBindMyselfCode+
+	&quot;数据库中的is_bind_sx_agcodeDB值是：&quot;+is_bind_sx_agcodeDB+&quot;接口返回的值是：&quot;+isBindSxAgcode+
+	&quot;数据库中的is_sale_qualificationsDB值是：&quot;+is_sale_qualificationsDB+&quot;接口返回的值是：&quot;+isSaleQualifications+
+	&quot;数据库中的remarkDB值是：&quot;+remarkDB+&quot;接口返回的值是：&quot;+remark+
+	&quot;数据库中的other_msgDB值是：&quot;+other_msgDB+&quot;接口返回的值是：&quot;+otherMsg;
+}</stringProp>
+                <stringProp name="BeanShellAssertion.filename"></stringProp>
+                <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+              </BeanShellAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="异常场景" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="保存财险员工信息-saveCxAgentDetail（不传agentCode）" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;agentCode&quot;: &quot;${agentCode}&quot;,&#xd;
+	&quot;cxAgentBirthday&quot;: &quot;${cxAgentBirthday}&quot;,&#xd;
+	&quot;cxAgentCode&quot;: &quot;${cxAgentCode}&quot;,&#xd;
+	&quot;cxAgentDuty&quot;: &quot;${cxAgentDuty}&quot;,&#xd;
+	&quot;cxAgentGender&quot;: &quot;${cxAgentGender}&quot;,&#xd;
+	&quot;cxAgentHobby&quot;: &quot;${cxAgentHobby}&quot;,&#xd;
+	&quot;cxAgentName&quot;: &quot;${cxAgentName}&quot;,&#xd;
+	&quot;cxAgentPhone&quot;: &quot;${cxAgentPhone}&quot;,&#xd;
+	&quot;cxBranchId&quot;: &quot;${cxBranchId}&quot;,&#xd;
+	&quot;cxBranchName&quot;: &quot;${cxBranchName}&quot;,&#xd;
+	&quot;isBindMyselfCode&quot;: &quot;${isBindMyselfCode}&quot;,&#xd;
+	&quot;isBindSxAgcode&quot;: &quot;${isBindSxAgcode}&quot;,&#xd;
+	&quot;isSaleQualifications&quot;: &quot;${isSaleQualifications}&quot;,&#xd;
+	&quot;organId&quot;: &quot;1450304&quot;,&#xd;
+	&quot;otherMsg&quot;: &quot;${otherMsg}&quot;,&#xd;
+	&quot;remark&quot;: &quot;${remark}&quot;,&#xd;
+	&quot;transExeDate&quot;: &quot;2019-12-17&quot;, &#xd;
+	&quot;transExeTime&quot;: &quot;10:08:47&quot;,&#xd;
+	&quot;transRefGUID&quot;: &quot;x3nMIVoz&quot;,&#xd;
+	&quot;uid&quot;: &quot;后台生成&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">xszcuat.picclife.cn</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+            <stringProp name="HTTPSampler.path">${url}/interactioncommissionapi/serviceAreaManagement/saveCxAgentDetail</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="准备请求参数" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">String agentCode = &quot;&quot;;
+String cxAgentBirthday = &quot;2021-01-21&quot;;
+String cxAgentCode = &quot;3145015787&quot;;
+String cxAgentDuty = &quot;自动化测试&quot;;
+String cxAgentGender = &quot;0&quot;;
+String cxAgentHobby = &quot;打球&quot;;
+String cxAgentName = &quot;张三&quot;;
+String cxAgentPhone = &quot;13812341234&quot;;
+String cxBranchId = &quot;3145015787&quot;;
+String cxBranchName = &quot;张三机构&quot;;
+String isBindMyselfCode = &quot;1&quot;;
+String isBindSxAgcode = &quot;1&quot;;
+String isSaleQualifications = &quot;1&quot;;
+String otherMsg = &quot;其他信息&quot;;
+String remark = &quot;备注&quot;;
+
+vars.put(&quot;agentCode&quot;,agentCode);
+vars.put(&quot;cxAgentBirthday&quot;,cxAgentBirthday);
+vars.put(&quot;cxAgentCode&quot;,cxAgentCode);
+vars.put(&quot;cxAgentDuty&quot;,cxAgentDuty);
+vars.put(&quot;cxAgentGender&quot;,cxAgentGender);
+vars.put(&quot;cxAgentHobby&quot;,cxAgentHobby);
+vars.put(&quot;cxAgentName&quot;,cxAgentName);
+vars.put(&quot;cxAgentPhone&quot;,cxAgentPhone);
+vars.put(&quot;cxBranchId&quot;,cxBranchId);
+vars.put(&quot;cxBranchName&quot;,cxBranchName);
+vars.put(&quot;isBindMyselfCode&quot;,isBindMyselfCode);
+vars.put(&quot;isBindSxAgcode&quot;,isBindSxAgcode);
+vars.put(&quot;isSaleQualifications&quot;,isSaleQualifications);
+vars.put(&quot;otherMsg&quot;,otherMsg);
+vars.put(&quot;remark&quot;,remark);</stringProp>
+            </BeanShellPreProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="断言返回200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultCode为3" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultCode</stringProp>
+              <stringProp name="EXPECTED_VALUE">3</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultInfo为 操作员编码格式错误!" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultInfo</stringProp>
+              <stringProp name="EXPECTED_VALUE">操作员编码格式错误!</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="！保存财险员工信息-saveCxAgentDetail（不传cxAgentBirthday）" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;agentCode&quot;: &quot;${agentCode}&quot;,&#xd;
+	&quot;cxAgentBirthday&quot;: &quot;${cxAgentBirthday}&quot;,&#xd;
+	&quot;cxAgentCode&quot;: &quot;${cxAgentCode}&quot;,&#xd;
+	&quot;cxAgentDuty&quot;: &quot;${cxAgentDuty}&quot;,&#xd;
+	&quot;cxAgentGender&quot;: &quot;${cxAgentGender}&quot;,&#xd;
+	&quot;cxAgentHobby&quot;: &quot;${cxAgentHobby}&quot;,&#xd;
+	&quot;cxAgentName&quot;: &quot;${cxAgentName}&quot;,&#xd;
+	&quot;cxAgentPhone&quot;: &quot;${cxAgentPhone}&quot;,&#xd;
+	&quot;cxBranchId&quot;: &quot;${cxBranchId}&quot;,&#xd;
+	&quot;cxBranchName&quot;: &quot;${cxBranchName}&quot;,&#xd;
+	&quot;isBindMyselfCode&quot;: &quot;${isBindMyselfCode}&quot;,&#xd;
+	&quot;isBindSxAgcode&quot;: &quot;${isBindSxAgcode}&quot;,&#xd;
+	&quot;isSaleQualifications&quot;: &quot;${isSaleQualifications}&quot;,&#xd;
+	&quot;organId&quot;: &quot;1450304&quot;,&#xd;
+	&quot;otherMsg&quot;: &quot;${otherMsg}&quot;,&#xd;
+	&quot;remark&quot;: &quot;${remark}&quot;,&#xd;
+	&quot;transExeDate&quot;: &quot;2019-12-17&quot;, &#xd;
+	&quot;transExeTime&quot;: &quot;10:08:47&quot;,&#xd;
+	&quot;transRefGUID&quot;: &quot;x3nMIVoz&quot;,&#xd;
+	&quot;uid&quot;: &quot;后台生成&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">xszcuat.picclife.cn</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+            <stringProp name="HTTPSampler.path">${url}/interactioncommissionapi/serviceAreaManagement/saveCxAgentDetail</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="准备请求参数" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">String agentCode = &quot;3145015787&quot;;
+String cxAgentBirthday = &quot;&quot;;
+String cxAgentCode = &quot;3145015787&quot;;
+String cxAgentDuty = &quot;自动化测试&quot;;
+String cxAgentGender = &quot;0&quot;;
+String cxAgentHobby = &quot;打球&quot;;
+String cxAgentName = &quot;张三&quot;;
+String cxAgentPhone = &quot;13812341234&quot;;
+String cxBranchId = &quot;3145015787&quot;;
+String cxBranchName = &quot;张三机构&quot;;
+String isBindMyselfCode = &quot;1&quot;;
+String isBindSxAgcode = &quot;1&quot;;
+String isSaleQualifications = &quot;1&quot;;
+String otherMsg = &quot;其他信息&quot;;
+String remark = &quot;备注&quot;;
+
+vars.put(&quot;agentCode&quot;,agentCode);
+vars.put(&quot;cxAgentBirthday&quot;,cxAgentBirthday);
+vars.put(&quot;cxAgentCode&quot;,cxAgentCode);
+vars.put(&quot;cxAgentDuty&quot;,cxAgentDuty);
+vars.put(&quot;cxAgentGender&quot;,cxAgentGender);
+vars.put(&quot;cxAgentHobby&quot;,cxAgentHobby);
+vars.put(&quot;cxAgentName&quot;,cxAgentName);
+vars.put(&quot;cxAgentPhone&quot;,cxAgentPhone);
+vars.put(&quot;cxBranchId&quot;,cxBranchId);
+vars.put(&quot;cxBranchName&quot;,cxBranchName);
+vars.put(&quot;isBindMyselfCode&quot;,isBindMyselfCode);
+vars.put(&quot;isBindSxAgcode&quot;,isBindSxAgcode);
+vars.put(&quot;isSaleQualifications&quot;,isSaleQualifications);
+vars.put(&quot;otherMsg&quot;,otherMsg);
+vars.put(&quot;remark&quot;,remark);
+
+log.info(&quot;--------------------------------------------------------------------------&quot;+cxAgentBirthday);</stringProp>
+            </BeanShellPreProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="断言返回200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultCode为3" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultCode</stringProp>
+              <stringProp name="EXPECTED_VALUE">3</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultInfo为 操作员编码格式错误!" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultInfo</stringProp>
+              <stringProp name="EXPECTED_VALUE">操作员编码格式错误!</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="保存财险员工信息-saveCxAgentDetail（不传cxAgentCode）" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;agentCode&quot;: &quot;${agentCode}&quot;,&#xd;
+	&quot;cxAgentBirthday&quot;: &quot;${cxAgentBirthday}&quot;,&#xd;
+	&quot;cxAgentCode&quot;: &quot;${cxAgentCode}&quot;,&#xd;
+	&quot;cxAgentDuty&quot;: &quot;${cxAgentDuty}&quot;,&#xd;
+	&quot;cxAgentGender&quot;: &quot;${cxAgentGender}&quot;,&#xd;
+	&quot;cxAgentHobby&quot;: &quot;${cxAgentHobby}&quot;,&#xd;
+	&quot;cxAgentName&quot;: &quot;${cxAgentName}&quot;,&#xd;
+	&quot;cxAgentPhone&quot;: &quot;${cxAgentPhone}&quot;,&#xd;
+	&quot;cxBranchId&quot;: &quot;${cxBranchId}&quot;,&#xd;
+	&quot;cxBranchName&quot;: &quot;${cxBranchName}&quot;,&#xd;
+	&quot;isBindMyselfCode&quot;: &quot;${isBindMyselfCode}&quot;,&#xd;
+	&quot;isBindSxAgcode&quot;: &quot;${isBindSxAgcode}&quot;,&#xd;
+	&quot;isSaleQualifications&quot;: &quot;${isSaleQualifications}&quot;,&#xd;
+	&quot;organId&quot;: &quot;1450304&quot;,&#xd;
+	&quot;otherMsg&quot;: &quot;${otherMsg}&quot;,&#xd;
+	&quot;remark&quot;: &quot;${remark}&quot;,&#xd;
+	&quot;transExeDate&quot;: &quot;2019-12-17&quot;, &#xd;
+	&quot;transExeTime&quot;: &quot;10:08:47&quot;,&#xd;
+	&quot;transRefGUID&quot;: &quot;x3nMIVoz&quot;,&#xd;
+	&quot;uid&quot;: &quot;后台生成&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">xszcuat.picclife.cn</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+            <stringProp name="HTTPSampler.path">${url}/interactioncommissionapi/serviceAreaManagement/saveCxAgentDetail</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="准备请求参数" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">String agentCode = &quot;3145015787&quot;;
+String cxAgentBirthday = &quot;2021-01-21&quot;;
+String cxAgentCode = &quot;&quot;;
+String cxAgentDuty = &quot;自动化测试&quot;;
+String cxAgentGender = &quot;0&quot;;
+String cxAgentHobby = &quot;打球&quot;;
+String cxAgentName = &quot;张三&quot;;
+String cxAgentPhone = &quot;13812341234&quot;;
+String cxBranchId = &quot;3145015787&quot;;
+String cxBranchName = &quot;张三机构&quot;;
+String isBindMyselfCode = &quot;1&quot;;
+String isBindSxAgcode = &quot;1&quot;;
+String isSaleQualifications = &quot;1&quot;;
+String otherMsg = &quot;其他信息&quot;;
+String remark = &quot;备注&quot;;
+
+vars.put(&quot;agentCode&quot;,agentCode);
+vars.put(&quot;cxAgentBirthday&quot;,cxAgentBirthday);
+vars.put(&quot;cxAgentCode&quot;,cxAgentCode);
+vars.put(&quot;cxAgentDuty&quot;,cxAgentDuty);
+vars.put(&quot;cxAgentGender&quot;,cxAgentGender);
+vars.put(&quot;cxAgentHobby&quot;,cxAgentHobby);
+vars.put(&quot;cxAgentName&quot;,cxAgentName);
+vars.put(&quot;cxAgentPhone&quot;,cxAgentPhone);
+vars.put(&quot;cxBranchId&quot;,cxBranchId);
+vars.put(&quot;cxBranchName&quot;,cxBranchName);
+vars.put(&quot;isBindMyselfCode&quot;,isBindMyselfCode);
+vars.put(&quot;isBindSxAgcode&quot;,isBindSxAgcode);
+vars.put(&quot;isSaleQualifications&quot;,isSaleQualifications);
+vars.put(&quot;otherMsg&quot;,otherMsg);
+vars.put(&quot;remark&quot;,remark);
+</stringProp>
+            </BeanShellPreProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="断言返回200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultCode为3" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultCode</stringProp>
+              <stringProp name="EXPECTED_VALUE">3</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultInfo为 财险员工工号（必填）" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultInfo</stringProp>
+              <stringProp name="EXPECTED_VALUE">财险员工工号（必填）</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="！保存财险员工信息-saveCxAgentDetail（不传cxAgentGender）" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;agentCode&quot;: &quot;${agentCode}&quot;,&#xd;
+	&quot;cxAgentBirthday&quot;: &quot;${cxAgentBirthday}&quot;,&#xd;
+	&quot;cxAgentCode&quot;: &quot;${cxAgentCode}&quot;,&#xd;
+	&quot;cxAgentDuty&quot;: &quot;${cxAgentDuty}&quot;,&#xd;
+	&quot;cxAgentGender&quot;: &quot;${cxAgentGender}&quot;,&#xd;
+	&quot;cxAgentHobby&quot;: &quot;${cxAgentHobby}&quot;,&#xd;
+	&quot;cxAgentName&quot;: &quot;${cxAgentName}&quot;,&#xd;
+	&quot;cxAgentPhone&quot;: &quot;${cxAgentPhone}&quot;,&#xd;
+	&quot;cxBranchId&quot;: &quot;${cxBranchId}&quot;,&#xd;
+	&quot;cxBranchName&quot;: &quot;${cxBranchName}&quot;,&#xd;
+	&quot;isBindMyselfCode&quot;: &quot;${isBindMyselfCode}&quot;,&#xd;
+	&quot;isBindSxAgcode&quot;: &quot;${isBindSxAgcode}&quot;,&#xd;
+	&quot;isSaleQualifications&quot;: &quot;${isSaleQualifications}&quot;,&#xd;
+	&quot;organId&quot;: &quot;1450304&quot;,&#xd;
+	&quot;otherMsg&quot;: &quot;${otherMsg}&quot;,&#xd;
+	&quot;remark&quot;: &quot;${remark}&quot;,&#xd;
+	&quot;transExeDate&quot;: &quot;2019-12-17&quot;, &#xd;
+	&quot;transExeTime&quot;: &quot;10:08:47&quot;,&#xd;
+	&quot;transRefGUID&quot;: &quot;x3nMIVoz&quot;,&#xd;
+	&quot;uid&quot;: &quot;后台生成&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">xszcuat.picclife.cn</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+            <stringProp name="HTTPSampler.path">${url}/interactioncommissionapi/serviceAreaManagement/saveCxAgentDetail</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="准备请求参数" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">String agentCode = &quot;3145015787&quot;;
+String cxAgentBirthday = &quot;2021-01-21&quot;;
+String cxAgentCode = &quot;3145015787&quot;;
+String cxAgentDuty = &quot;自动化测试&quot;;
+String cxAgentGender = &quot;&quot;;
+String cxAgentHobby = &quot;打球&quot;;
+String cxAgentName = &quot;张三&quot;;
+String cxAgentPhone = &quot;13812341234&quot;;
+String cxBranchId = &quot;3145015787&quot;;
+String cxBranchName = &quot;张三机构&quot;;
+String isBindMyselfCode = &quot;1&quot;;
+String isBindSxAgcode = &quot;1&quot;;
+String isSaleQualifications = &quot;1&quot;;
+String otherMsg = &quot;其他信息&quot;;
+String remark = &quot;备注&quot;;
+
+vars.put(&quot;agentCode&quot;,agentCode);
+vars.put(&quot;cxAgentBirthday&quot;,cxAgentBirthday);
+vars.put(&quot;cxAgentCode&quot;,cxAgentCode);
+vars.put(&quot;cxAgentDuty&quot;,cxAgentDuty);
+vars.put(&quot;cxAgentGender&quot;,cxAgentGender);
+vars.put(&quot;cxAgentHobby&quot;,cxAgentHobby);
+vars.put(&quot;cxAgentName&quot;,cxAgentName);
+vars.put(&quot;cxAgentPhone&quot;,cxAgentPhone);
+vars.put(&quot;cxBranchId&quot;,cxBranchId);
+vars.put(&quot;cxBranchName&quot;,cxBranchName);
+vars.put(&quot;isBindMyselfCode&quot;,isBindMyselfCode);
+vars.put(&quot;isBindSxAgcode&quot;,isBindSxAgcode);
+vars.put(&quot;isSaleQualifications&quot;,isSaleQualifications);
+vars.put(&quot;otherMsg&quot;,otherMsg);
+vars.put(&quot;remark&quot;,remark);</stringProp>
+            </BeanShellPreProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="断言返回200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultCode为3" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultCode</stringProp>
+              <stringProp name="EXPECTED_VALUE">3</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultInfo为 操作员编码格式错误!" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultInfo</stringProp>
+              <stringProp name="EXPECTED_VALUE">操作员编码格式错误!</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="保存财险员工信息-saveCxAgentDetail（不传cxAgentName）" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;agentCode&quot;: &quot;${agentCode}&quot;,&#xd;
+	&quot;cxAgentBirthday&quot;: &quot;${cxAgentBirthday}&quot;,&#xd;
+	&quot;cxAgentCode&quot;: &quot;${cxAgentCode}&quot;,&#xd;
+	&quot;cxAgentDuty&quot;: &quot;${cxAgentDuty}&quot;,&#xd;
+	&quot;cxAgentGender&quot;: &quot;${cxAgentGender}&quot;,&#xd;
+	&quot;cxAgentHobby&quot;: &quot;${cxAgentHobby}&quot;,&#xd;
+	&quot;cxAgentName&quot;: &quot;${cxAgentName}&quot;,&#xd;
+	&quot;cxAgentPhone&quot;: &quot;${cxAgentPhone}&quot;,&#xd;
+	&quot;cxBranchId&quot;: &quot;${cxBranchId}&quot;,&#xd;
+	&quot;cxBranchName&quot;: &quot;${cxBranchName}&quot;,&#xd;
+	&quot;isBindMyselfCode&quot;: &quot;${isBindMyselfCode}&quot;,&#xd;
+	&quot;isBindSxAgcode&quot;: &quot;${isBindSxAgcode}&quot;,&#xd;
+	&quot;isSaleQualifications&quot;: &quot;${isSaleQualifications}&quot;,&#xd;
+	&quot;organId&quot;: &quot;1450304&quot;,&#xd;
+	&quot;otherMsg&quot;: &quot;${otherMsg}&quot;,&#xd;
+	&quot;remark&quot;: &quot;${remark}&quot;,&#xd;
+	&quot;transExeDate&quot;: &quot;2019-12-17&quot;, &#xd;
+	&quot;transExeTime&quot;: &quot;10:08:47&quot;,&#xd;
+	&quot;transRefGUID&quot;: &quot;x3nMIVoz&quot;,&#xd;
+	&quot;uid&quot;: &quot;后台生成&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">xszcuat.picclife.cn</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+            <stringProp name="HTTPSampler.path">${url}/interactioncommissionapi/serviceAreaManagement/saveCxAgentDetail</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="准备请求参数" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">String agentCode = &quot;3145015787&quot;;
+String cxAgentBirthday = &quot;2021-01-21&quot;;
+String cxAgentCode = &quot;3145015787&quot;;
+String cxAgentDuty = &quot;自动化测试&quot;;
+String cxAgentGender = &quot;0&quot;;
+String cxAgentHobby = &quot;打球&quot;;
+String cxAgentName = &quot;&quot;;
+String cxAgentPhone = &quot;13812341234&quot;;
+String cxBranchId = &quot;3145015787&quot;;
+String cxBranchName = &quot;张三机构&quot;;
+String isBindMyselfCode = &quot;1&quot;;
+String isBindSxAgcode = &quot;1&quot;;
+String isSaleQualifications = &quot;1&quot;;
+String otherMsg = &quot;其他信息&quot;;
+String remark = &quot;备注&quot;;
+
+vars.put(&quot;agentCode&quot;,agentCode);
+vars.put(&quot;cxAgentBirthday&quot;,cxAgentBirthday);
+vars.put(&quot;cxAgentCode&quot;,cxAgentCode);
+vars.put(&quot;cxAgentDuty&quot;,cxAgentDuty);
+vars.put(&quot;cxAgentGender&quot;,cxAgentGender);
+vars.put(&quot;cxAgentHobby&quot;,cxAgentHobby);
+vars.put(&quot;cxAgentName&quot;,cxAgentName);
+vars.put(&quot;cxAgentPhone&quot;,cxAgentPhone);
+vars.put(&quot;cxBranchId&quot;,cxBranchId);
+vars.put(&quot;cxBranchName&quot;,cxBranchName);
+vars.put(&quot;isBindMyselfCode&quot;,isBindMyselfCode);
+vars.put(&quot;isBindSxAgcode&quot;,isBindSxAgcode);
+vars.put(&quot;isSaleQualifications&quot;,isSaleQualifications);
+vars.put(&quot;otherMsg&quot;,otherMsg);
+vars.put(&quot;remark&quot;,remark);</stringProp>
+            </BeanShellPreProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="断言返回200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultCode为3" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultCode</stringProp>
+              <stringProp name="EXPECTED_VALUE">3</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultInfo为 财险员工姓名（必填）" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultInfo</stringProp>
+              <stringProp name="EXPECTED_VALUE">财险员工姓名（必填）</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="！保存财险员工信息-saveCxAgentDetail（不传cxAgentPhone）" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;agentCode&quot;: &quot;${agentCode}&quot;,&#xd;
+	&quot;cxAgentBirthday&quot;: &quot;${cxAgentBirthday}&quot;,&#xd;
+	&quot;cxAgentCode&quot;: &quot;${cxAgentCode}&quot;,&#xd;
+	&quot;cxAgentDuty&quot;: &quot;${cxAgentDuty}&quot;,&#xd;
+	&quot;cxAgentGender&quot;: &quot;${cxAgentGender}&quot;,&#xd;
+	&quot;cxAgentHobby&quot;: &quot;${cxAgentHobby}&quot;,&#xd;
+	&quot;cxAgentName&quot;: &quot;${cxAgentName}&quot;,&#xd;
+	&quot;cxAgentPhone&quot;: &quot;${cxAgentPhone}&quot;,&#xd;
+	&quot;cxBranchId&quot;: &quot;${cxBranchId}&quot;,&#xd;
+	&quot;cxBranchName&quot;: &quot;${cxBranchName}&quot;,&#xd;
+	&quot;isBindMyselfCode&quot;: &quot;${isBindMyselfCode}&quot;,&#xd;
+	&quot;isBindSxAgcode&quot;: &quot;${isBindSxAgcode}&quot;,&#xd;
+	&quot;isSaleQualifications&quot;: &quot;${isSaleQualifications}&quot;,&#xd;
+	&quot;organId&quot;: &quot;1450304&quot;,&#xd;
+	&quot;otherMsg&quot;: &quot;${otherMsg}&quot;,&#xd;
+	&quot;remark&quot;: &quot;${remark}&quot;,&#xd;
+	&quot;transExeDate&quot;: &quot;2019-12-17&quot;, &#xd;
+	&quot;transExeTime&quot;: &quot;10:08:47&quot;,&#xd;
+	&quot;transRefGUID&quot;: &quot;x3nMIVoz&quot;,&#xd;
+	&quot;uid&quot;: &quot;后台生成&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">xszcuat.picclife.cn</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+            <stringProp name="HTTPSampler.path">${url}/interactioncommissionapi/serviceAreaManagement/saveCxAgentDetail</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="准备请求参数" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">String agentCode = &quot;3145015787&quot;;
+String cxAgentBirthday = &quot;2021-01-21&quot;;
+String cxAgentCode = &quot;3145015787&quot;;
+String cxAgentDuty = &quot;自动化测试&quot;;
+String cxAgentGender = &quot;0&quot;;
+String cxAgentHobby = &quot;打球&quot;;
+String cxAgentName = &quot;张三&quot;;
+String cxAgentPhone = &quot;&quot;;
+String cxBranchId = &quot;3145015787&quot;;
+String cxBranchName = &quot;张三机构&quot;;
+String isBindMyselfCode = &quot;1&quot;;
+String isBindSxAgcode = &quot;1&quot;;
+String isSaleQualifications = &quot;1&quot;;
+String otherMsg = &quot;其他信息&quot;;
+String remark = &quot;备注&quot;;
+
+vars.put(&quot;agentCode&quot;,agentCode);
+vars.put(&quot;cxAgentBirthday&quot;,cxAgentBirthday);
+vars.put(&quot;cxAgentCode&quot;,cxAgentCode);
+vars.put(&quot;cxAgentDuty&quot;,cxAgentDuty);
+vars.put(&quot;cxAgentGender&quot;,cxAgentGender);
+vars.put(&quot;cxAgentHobby&quot;,cxAgentHobby);
+vars.put(&quot;cxAgentName&quot;,cxAgentName);
+vars.put(&quot;cxAgentPhone&quot;,cxAgentPhone);
+vars.put(&quot;cxBranchId&quot;,cxBranchId);
+vars.put(&quot;cxBranchName&quot;,cxBranchName);
+vars.put(&quot;isBindMyselfCode&quot;,isBindMyselfCode);
+vars.put(&quot;isBindSxAgcode&quot;,isBindSxAgcode);
+vars.put(&quot;isSaleQualifications&quot;,isSaleQualifications);
+vars.put(&quot;otherMsg&quot;,otherMsg);
+vars.put(&quot;remark&quot;,remark);</stringProp>
+            </BeanShellPreProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="断言返回200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultCode为3" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultCode</stringProp>
+              <stringProp name="EXPECTED_VALUE">3</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultInfo为 操作员编码格式错误!" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultInfo</stringProp>
+              <stringProp name="EXPECTED_VALUE">操作员编码格式错误!</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="保存财险员工信息-saveCxAgentDetail（不传cxBranchId）" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;agentCode&quot;: &quot;${agentCode}&quot;,&#xd;
+	&quot;cxAgentBirthday&quot;: &quot;${cxAgentBirthday}&quot;,&#xd;
+	&quot;cxAgentCode&quot;: &quot;${cxAgentCode}&quot;,&#xd;
+	&quot;cxAgentDuty&quot;: &quot;${cxAgentDuty}&quot;,&#xd;
+	&quot;cxAgentGender&quot;: &quot;${cxAgentGender}&quot;,&#xd;
+	&quot;cxAgentHobby&quot;: &quot;${cxAgentHobby}&quot;,&#xd;
+	&quot;cxAgentName&quot;: &quot;${cxAgentName}&quot;,&#xd;
+	&quot;cxAgentPhone&quot;: &quot;${cxAgentPhone}&quot;,&#xd;
+	&quot;cxBranchId&quot;: &quot;${cxBranchId}&quot;,&#xd;
+	&quot;cxBranchName&quot;: &quot;${cxBranchName}&quot;,&#xd;
+	&quot;isBindMyselfCode&quot;: &quot;${isBindMyselfCode}&quot;,&#xd;
+	&quot;isBindSxAgcode&quot;: &quot;${isBindSxAgcode}&quot;,&#xd;
+	&quot;isSaleQualifications&quot;: &quot;${isSaleQualifications}&quot;,&#xd;
+	&quot;organId&quot;: &quot;1450304&quot;,&#xd;
+	&quot;otherMsg&quot;: &quot;${otherMsg}&quot;,&#xd;
+	&quot;remark&quot;: &quot;${remark}&quot;,&#xd;
+	&quot;transExeDate&quot;: &quot;2019-12-17&quot;, &#xd;
+	&quot;transExeTime&quot;: &quot;10:08:47&quot;,&#xd;
+	&quot;transRefGUID&quot;: &quot;x3nMIVoz&quot;,&#xd;
+	&quot;uid&quot;: &quot;后台生成&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">xszcuat.picclife.cn</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+            <stringProp name="HTTPSampler.path">${url}/interactioncommissionapi/serviceAreaManagement/saveCxAgentDetail</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="准备请求参数" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">String agentCode = &quot;3145015787&quot;;
+String cxAgentBirthday = &quot;2021-01-21&quot;;
+String cxAgentCode = &quot;3145015787&quot;;
+String cxAgentDuty = &quot;自动化测试&quot;;
+String cxAgentGender = &quot;0&quot;;
+String cxAgentHobby = &quot;打球&quot;;
+String cxAgentName = &quot;张三&quot;;
+String cxAgentPhone = &quot;13812341234&quot;;
+String cxBranchId = &quot;&quot;;
+String cxBranchName = &quot;张三机构&quot;;
+String isBindMyselfCode = &quot;1&quot;;
+String isBindSxAgcode = &quot;1&quot;;
+String isSaleQualifications = &quot;1&quot;;
+String otherMsg = &quot;其他信息&quot;;
+String remark = &quot;备注&quot;;
+
+vars.put(&quot;agentCode&quot;,agentCode);
+vars.put(&quot;cxAgentBirthday&quot;,cxAgentBirthday);
+vars.put(&quot;cxAgentCode&quot;,cxAgentCode);
+vars.put(&quot;cxAgentDuty&quot;,cxAgentDuty);
+vars.put(&quot;cxAgentGender&quot;,cxAgentGender);
+vars.put(&quot;cxAgentHobby&quot;,cxAgentHobby);
+vars.put(&quot;cxAgentName&quot;,cxAgentName);
+vars.put(&quot;cxAgentPhone&quot;,cxAgentPhone);
+vars.put(&quot;cxBranchId&quot;,cxBranchId);
+vars.put(&quot;cxBranchName&quot;,cxBranchName);
+vars.put(&quot;isBindMyselfCode&quot;,isBindMyselfCode);
+vars.put(&quot;isBindSxAgcode&quot;,isBindSxAgcode);
+vars.put(&quot;isSaleQualifications&quot;,isSaleQualifications);
+vars.put(&quot;otherMsg&quot;,otherMsg);
+vars.put(&quot;remark&quot;,remark);</stringProp>
+            </BeanShellPreProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="断言返回200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultCode为3" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultCode</stringProp>
+              <stringProp name="EXPECTED_VALUE">3</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultInfo为 财险四级机构ID（必填）" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultInfo</stringProp>
+              <stringProp name="EXPECTED_VALUE">财险四级机构ID（必填）</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="保存财险员工信息-saveCxAgentDetail（不传cxBranchName）" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;agentCode&quot;: &quot;${agentCode}&quot;,&#xd;
+	&quot;cxAgentBirthday&quot;: &quot;${cxAgentBirthday}&quot;,&#xd;
+	&quot;cxAgentCode&quot;: &quot;${cxAgentCode}&quot;,&#xd;
+	&quot;cxAgentDuty&quot;: &quot;${cxAgentDuty}&quot;,&#xd;
+	&quot;cxAgentGender&quot;: &quot;${cxAgentGender}&quot;,&#xd;
+	&quot;cxAgentHobby&quot;: &quot;${cxAgentHobby}&quot;,&#xd;
+	&quot;cxAgentName&quot;: &quot;${cxAgentName}&quot;,&#xd;
+	&quot;cxAgentPhone&quot;: &quot;${cxAgentPhone}&quot;,&#xd;
+	&quot;cxBranchId&quot;: &quot;${cxBranchId}&quot;,&#xd;
+	&quot;cxBranchName&quot;: &quot;${cxBranchName}&quot;,&#xd;
+	&quot;isBindMyselfCode&quot;: &quot;${isBindMyselfCode}&quot;,&#xd;
+	&quot;isBindSxAgcode&quot;: &quot;${isBindSxAgcode}&quot;,&#xd;
+	&quot;isSaleQualifications&quot;: &quot;${isSaleQualifications}&quot;,&#xd;
+	&quot;organId&quot;: &quot;1450304&quot;,&#xd;
+	&quot;otherMsg&quot;: &quot;${otherMsg}&quot;,&#xd;
+	&quot;remark&quot;: &quot;${remark}&quot;,&#xd;
+	&quot;transExeDate&quot;: &quot;2019-12-17&quot;, &#xd;
+	&quot;transExeTime&quot;: &quot;10:08:47&quot;,&#xd;
+	&quot;transRefGUID&quot;: &quot;x3nMIVoz&quot;,&#xd;
+	&quot;uid&quot;: &quot;后台生成&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">xszcuat.picclife.cn</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+            <stringProp name="HTTPSampler.path">${url}/interactioncommissionapi/serviceAreaManagement/saveCxAgentDetail</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="准备请求参数" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">String agentCode = &quot;3145015787&quot;;
+String cxAgentBirthday = &quot;2021-01-21&quot;;
+String cxAgentCode = &quot;3145015787&quot;;
+String cxAgentDuty = &quot;自动化测试&quot;;
+String cxAgentGender = &quot;0&quot;;
+String cxAgentHobby = &quot;打球&quot;;
+String cxAgentName = &quot;张三&quot;;
+String cxAgentPhone = &quot;13812341234&quot;;
+String cxBranchId = &quot;3145015787&quot;;
+String cxBranchName = &quot;&quot;;
+String isBindMyselfCode = &quot;1&quot;;
+String isBindSxAgcode = &quot;1&quot;;
+String isSaleQualifications = &quot;1&quot;;
+String otherMsg = &quot;其他信息&quot;;
+String remark = &quot;备注&quot;;
+
+vars.put(&quot;agentCode&quot;,agentCode);
+vars.put(&quot;cxAgentBirthday&quot;,cxAgentBirthday);
+vars.put(&quot;cxAgentCode&quot;,cxAgentCode);
+vars.put(&quot;cxAgentDuty&quot;,cxAgentDuty);
+vars.put(&quot;cxAgentGender&quot;,cxAgentGender);
+vars.put(&quot;cxAgentHobby&quot;,cxAgentHobby);
+vars.put(&quot;cxAgentName&quot;,cxAgentName);
+vars.put(&quot;cxAgentPhone&quot;,cxAgentPhone);
+vars.put(&quot;cxBranchId&quot;,cxBranchId);
+vars.put(&quot;cxBranchName&quot;,cxBranchName);
+vars.put(&quot;isBindMyselfCode&quot;,isBindMyselfCode);
+vars.put(&quot;isBindSxAgcode&quot;,isBindSxAgcode);
+vars.put(&quot;isSaleQualifications&quot;,isSaleQualifications);
+vars.put(&quot;otherMsg&quot;,otherMsg);
+vars.put(&quot;remark&quot;,remark);</stringProp>
+            </BeanShellPreProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="断言返回200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultCode为3" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultCode</stringProp>
+              <stringProp name="EXPECTED_VALUE">3</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultInfo为 财险四级机构名称（必填）" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultInfo</stringProp>
+              <stringProp name="EXPECTED_VALUE">财险四级机构名称（必填）</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="保存财险员工信息-saveCxAgentDetail（不传isBindMyselfCode）" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;agentCode&quot;: &quot;${agentCode}&quot;,&#xd;
+	&quot;cxAgentBirthday&quot;: &quot;${cxAgentBirthday}&quot;,&#xd;
+	&quot;cxAgentCode&quot;: &quot;${cxAgentCode}&quot;,&#xd;
+	&quot;cxAgentDuty&quot;: &quot;${cxAgentDuty}&quot;,&#xd;
+	&quot;cxAgentGender&quot;: &quot;${cxAgentGender}&quot;,&#xd;
+	&quot;cxAgentHobby&quot;: &quot;${cxAgentHobby}&quot;,&#xd;
+	&quot;cxAgentName&quot;: &quot;${cxAgentName}&quot;,&#xd;
+	&quot;cxAgentPhone&quot;: &quot;${cxAgentPhone}&quot;,&#xd;
+	&quot;cxBranchId&quot;: &quot;${cxBranchId}&quot;,&#xd;
+	&quot;cxBranchName&quot;: &quot;${cxBranchName}&quot;,&#xd;
+	&quot;isBindMyselfCode&quot;: &quot;${isBindMyselfCode}&quot;,&#xd;
+	&quot;isBindSxAgcode&quot;: &quot;${isBindSxAgcode}&quot;,&#xd;
+	&quot;isSaleQualifications&quot;: &quot;${isSaleQualifications}&quot;,&#xd;
+	&quot;organId&quot;: &quot;1450304&quot;,&#xd;
+	&quot;otherMsg&quot;: &quot;${otherMsg}&quot;,&#xd;
+	&quot;remark&quot;: &quot;${remark}&quot;,&#xd;
+	&quot;transExeDate&quot;: &quot;2019-12-17&quot;, &#xd;
+	&quot;transExeTime&quot;: &quot;10:08:47&quot;,&#xd;
+	&quot;transRefGUID&quot;: &quot;x3nMIVoz&quot;,&#xd;
+	&quot;uid&quot;: &quot;后台生成&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">xszcuat.picclife.cn</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+            <stringProp name="HTTPSampler.path">${url}/interactioncommissionapi/serviceAreaManagement/saveCxAgentDetail</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="准备请求参数" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">String agentCode = &quot;3145015787&quot;;
+String cxAgentBirthday = &quot;2021-01-21&quot;;
+String cxAgentCode = &quot;3145015787&quot;;
+String cxAgentDuty = &quot;自动化测试&quot;;
+String cxAgentGender = &quot;0&quot;;
+String cxAgentHobby = &quot;打球&quot;;
+String cxAgentName = &quot;张三&quot;;
+String cxAgentPhone = &quot;13812341234&quot;;
+String cxBranchId = &quot;3145015787&quot;;
+String cxBranchName = &quot;张三机构&quot;;
+String isBindMyselfCode = &quot;&quot;;
+String isBindSxAgcode = &quot;1&quot;;
+String isSaleQualifications = &quot;1&quot;;
+String otherMsg = &quot;其他信息&quot;;
+String remark = &quot;备注&quot;;
+
+vars.put(&quot;agentCode&quot;,agentCode);
+vars.put(&quot;cxAgentBirthday&quot;,cxAgentBirthday);
+vars.put(&quot;cxAgentCode&quot;,cxAgentCode);
+vars.put(&quot;cxAgentDuty&quot;,cxAgentDuty);
+vars.put(&quot;cxAgentGender&quot;,cxAgentGender);
+vars.put(&quot;cxAgentHobby&quot;,cxAgentHobby);
+vars.put(&quot;cxAgentName&quot;,cxAgentName);
+vars.put(&quot;cxAgentPhone&quot;,cxAgentPhone);
+vars.put(&quot;cxBranchId&quot;,cxBranchId);
+vars.put(&quot;cxBranchName&quot;,cxBranchName);
+vars.put(&quot;isBindMyselfCode&quot;,isBindMyselfCode);
+vars.put(&quot;isBindSxAgcode&quot;,isBindSxAgcode);
+vars.put(&quot;isSaleQualifications&quot;,isSaleQualifications);
+vars.put(&quot;otherMsg&quot;,otherMsg);
+vars.put(&quot;remark&quot;,remark);</stringProp>
+            </BeanShellPreProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="断言返回200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultCode为3" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultCode</stringProp>
+              <stringProp name="EXPECTED_VALUE">3</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultInfo为 是否绑定本人工号不允许为空" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultInfo</stringProp>
+              <stringProp name="EXPECTED_VALUE">是否绑定本人工号不允许为空</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="保存财险员工信息-saveCxAgentDetail（不传isBindSxAgcode）" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;agentCode&quot;: &quot;${agentCode}&quot;,&#xd;
+	&quot;cxAgentBirthday&quot;: &quot;${cxAgentBirthday}&quot;,&#xd;
+	&quot;cxAgentCode&quot;: &quot;${cxAgentCode}&quot;,&#xd;
+	&quot;cxAgentDuty&quot;: &quot;${cxAgentDuty}&quot;,&#xd;
+	&quot;cxAgentGender&quot;: &quot;${cxAgentGender}&quot;,&#xd;
+	&quot;cxAgentHobby&quot;: &quot;${cxAgentHobby}&quot;,&#xd;
+	&quot;cxAgentName&quot;: &quot;${cxAgentName}&quot;,&#xd;
+	&quot;cxAgentPhone&quot;: &quot;${cxAgentPhone}&quot;,&#xd;
+	&quot;cxBranchId&quot;: &quot;${cxBranchId}&quot;,&#xd;
+	&quot;cxBranchName&quot;: &quot;${cxBranchName}&quot;,&#xd;
+	&quot;isBindMyselfCode&quot;: &quot;${isBindMyselfCode}&quot;,&#xd;
+	&quot;isBindSxAgcode&quot;: &quot;${isBindSxAgcode}&quot;,&#xd;
+	&quot;isSaleQualifications&quot;: &quot;${isSaleQualifications}&quot;,&#xd;
+	&quot;organId&quot;: &quot;1450304&quot;,&#xd;
+	&quot;otherMsg&quot;: &quot;${otherMsg}&quot;,&#xd;
+	&quot;remark&quot;: &quot;${remark}&quot;,&#xd;
+	&quot;transExeDate&quot;: &quot;2019-12-17&quot;, &#xd;
+	&quot;transExeTime&quot;: &quot;10:08:47&quot;,&#xd;
+	&quot;transRefGUID&quot;: &quot;x3nMIVoz&quot;,&#xd;
+	&quot;uid&quot;: &quot;后台生成&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">xszcuat.picclife.cn</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+            <stringProp name="HTTPSampler.path">${url}/interactioncommissionapi/serviceAreaManagement/saveCxAgentDetail</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="准备请求参数" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">String agentCode = &quot;3145015787&quot;;
+String cxAgentBirthday = &quot;2021-01-21&quot;;
+String cxAgentCode = &quot;3145015787&quot;;
+String cxAgentDuty = &quot;自动化测试&quot;;
+String cxAgentGender = &quot;0&quot;;
+String cxAgentHobby = &quot;打球&quot;;
+String cxAgentName = &quot;张三&quot;;
+String cxAgentPhone = &quot;13812341234&quot;;
+String cxBranchId = &quot;3145015787&quot;;
+String cxBranchName = &quot;张三机构&quot;;
+String isBindMyselfCode = &quot;1&quot;;
+String isBindSxAgcode = &quot;&quot;;
+String isSaleQualifications = &quot;1&quot;;
+String otherMsg = &quot;其他信息&quot;;
+String remark = &quot;备注&quot;;
+
+vars.put(&quot;agentCode&quot;,agentCode);
+vars.put(&quot;cxAgentBirthday&quot;,cxAgentBirthday);
+vars.put(&quot;cxAgentCode&quot;,cxAgentCode);
+vars.put(&quot;cxAgentDuty&quot;,cxAgentDuty);
+vars.put(&quot;cxAgentGender&quot;,cxAgentGender);
+vars.put(&quot;cxAgentHobby&quot;,cxAgentHobby);
+vars.put(&quot;cxAgentName&quot;,cxAgentName);
+vars.put(&quot;cxAgentPhone&quot;,cxAgentPhone);
+vars.put(&quot;cxBranchId&quot;,cxBranchId);
+vars.put(&quot;cxBranchName&quot;,cxBranchName);
+vars.put(&quot;isBindMyselfCode&quot;,isBindMyselfCode);
+vars.put(&quot;isBindSxAgcode&quot;,isBindSxAgcode);
+vars.put(&quot;isSaleQualifications&quot;,isSaleQualifications);
+vars.put(&quot;otherMsg&quot;,otherMsg);
+vars.put(&quot;remark&quot;,remark);</stringProp>
+            </BeanShellPreProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="断言返回200" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultCode为3" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultCode</stringProp>
+              <stringProp name="EXPECTED_VALUE">3</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="断言resultInfo为 是否已绑定寿险人员工号不允许为空" enabled="true">
+              <stringProp name="JSON_PATH">$.transResult.resultInfo</stringProp>
+              <stringProp name="EXPECTED_VALUE">是否已绑定寿险人员工号不允许为空</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
